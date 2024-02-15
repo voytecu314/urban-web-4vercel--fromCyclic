@@ -1,0 +1,101 @@
+.mt-100 {
+    margin-top: 100px
+}
+
+.mb-30{
+  margin-bottom: 30px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: none !important
+}
+
+.card .card-body {
+    padding: 1.25rem 1.75rem
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem
+}
+
+.card-body select {
+  display: block;
+  margin: 5px auto;
+  background-color: transparent;
+  border: 1px solid gray;
+  outline: none;
+}
+
+#customer-description-box {
+    display: none;
+}
+
+#customer-description {
+    margin: 10px auto;
+}
+
+
+.card .card-title {
+    color: #000000;
+    margin-bottom: 0.625rem;
+    font-size: 0.875rem;
+    font-weight: 500
+}
+
+.card-description {
+    width: 100%;
+    margin-bottom: .875rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+label.check {
+  cursor: pointer;
+}
+label.check input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+label.check > span {
+  padding: 7px 14px;
+    border: 2px solid #00CC99;
+    display: inline-block;
+    color: #00CC99;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+label.check input:checked + span {
+  border-color: #2dc4bc;
+    background-color: #2dc4bc;
+    color: #fff;
+}
+
+.file-container {
+  position: relative;
+}
+
+.file-container.size-popup::after {
+  content: 'File size is too big - max 5MB';
+  position: absolute;
+  left: 25%;
+  right: 10%;
+  top: -5px;
+  bottom: -5px;
+  padding: 10px 0;
+  color: rgb(240, 80,100);
+  text-align: center;
+  font-size: large;
+  border-radius: 8px;
+  background-image: linear-gradient(gray,lightgray, aliceblue, lightgray, gray);
+}

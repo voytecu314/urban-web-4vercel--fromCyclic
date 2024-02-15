@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanWebAdmin</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <link href="../css/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-image: linear-gradient(157deg, #0066CC 0%, #00CC99 100%);
+            font-size: xx-large;
+        }
+
+        .user-info {
+           color: rgb(194, 10, 10);
+        }
+
+        input {
+            width: 45vw;
+            height: 40px;
+            max-width: 360px;
+            border-radius: 10px;
+            border-width: 1px; 
+            text-align: center;
+            font-size: large;
+        }
+
+        .submit-btn {
+            width: 100px;
+            height: 40px;
+            background-color: #00CC99;
+            border-width: 1px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="logo">
+        <span>Urban </span>
+        <i class="bi bi-globe text-white"></i>
+        <span> Web</span>
+    </div>
+
+    <p class="user-info"></p>
+
+    <form class="admin-form">
+
+        <label for="admin-pass">
+            <input id="admin-pass" name="pass" type="password" class="form-control" placeholder="Admin password" autofocus required>
+        </label>
+
+        <button type="submit" class="submit-btn">Login</button>
+        
+    </form>
+    <script>
+
+        async function sendPassword (e) {
+            e.preventDefault();
+
+            try {
+                const fetchResponse = await fetch(
+                    'https://urban-web.cyclic.app/urban-web/admin/login', 
+                    {
+                        method: 'POST', 
+                        headers: {'Content-Type':'application/json'},
+                        body: JSON.stringify({pass: e.target.querySelector('input').value})
+                    });
+    
+                const serverResponse = await fetchResponse.json();
+            console.log(serverResponse);
+                if (serverResponse.auth) {
+                    window.location.pathname='/urban-web/admin';
+                    return;
+                }
+
+                document.querySelector('.user-info').textContent = 'Please input correct password!'
+            } catch (error) {
+                console.log('Fetch error - sending pass',error);
+            }
+
+        }
+
+
+
+        document.querySelector('.admin-form').addEventListener('submit', sendPassword)
+    </script>
+</body>
+</html>
