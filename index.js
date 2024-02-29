@@ -12,6 +12,14 @@ const PORT = process.env.PORT || 5500;
 app.use( cors({origin: 'https://urbanweb.site'}) );
 app.use('/',express.json());
 
+app.get('/test-get',(req, res)=>{
+    res.json({get:'ok'});
+});
+
+app.post('/test-post',(req, res)=>{
+    res.json({post: req.body});
+});
+
 //Global error handle
 app.use('/', globalErrorHandler);
 
