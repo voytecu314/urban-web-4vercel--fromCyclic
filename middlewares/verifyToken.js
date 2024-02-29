@@ -5,14 +5,13 @@ export default
 
         try {
 
-            const decodedPayload = jwt.verify(req.cookies.jwt_token, process.env.JWT_SECRET);
-            req.jwtToken={verified: true};
+            const decodedPayload = jwt.verify(req.body.jwt_token, process.env.JWT_SECRET);
+            next();
 
           } catch(err) {
             
-            req.jwtToken={verified: false};
+            next(err);
 
           }
-
-          next();
+         
     };

@@ -15,4 +15,4 @@ class WebsiteS3Paths {
     }
 }
 
-export const urbanWebS3Paths = new WebsiteS3Paths("urban-web",["EN","PL","DE"]);
+export const urbanWebS3Paths = new WebsiteS3Paths("lack-docktor",["DE","EN"]);
