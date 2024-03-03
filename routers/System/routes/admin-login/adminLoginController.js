@@ -8,10 +8,12 @@ export default (req, res, next) => {
             auth: false,
             message: null,
         }
-        
-        if(req.body.user + req.body.password === process.env.ADMIN_PASS) {
 
-            const jwtToken = jwt.sign({ site: 'LackDocktor' }, process.env.JWT_SECRET, { expiresIn: '15min' });
+        const {user, password} = req.body;
+        
+        if(password === process.env[`${user.toUpperCase()}_PASS`]) {
+
+            const jwtToken = jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: '15min' });
 
             response.jwtToken = jwtToken;
             response.auth=true;
