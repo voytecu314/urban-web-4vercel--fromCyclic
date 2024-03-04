@@ -18,6 +18,6 @@ app.use('/system', systemRouter);
 app.use('/lackdoktor',lackDoktorRouter);
 
 //Global error handle
-app.use('/lackdoktor', globalErrorHandler);
+app.use('/', globalErrorHandler);
 
 const server = app.listen(PORT,()=>console.log('Server listens on port %s !',server.address().port));

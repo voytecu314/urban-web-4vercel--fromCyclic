@@ -15,4 +15,4 @@ class WebsiteS3Paths {
     }
 }
 
-export const urbanWebS3Paths = new WebsiteS3Paths("lackdoktor",["DE","EN"]);
+export const lackdoktorS3Paths = new WebsiteS3Paths("lackdoktor",["DE","EN"]);

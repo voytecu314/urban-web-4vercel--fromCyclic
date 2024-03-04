@@ -10,10 +10,13 @@ export default (req, res, next) => {
         }
 
         const {user, password} = req.body;
+        //later change userPass to userHash (bcrypt)
+        const userPass = process.env[`${user.toUpperCase()}_PASS`]
+        // const salt = userPass xxx
         
-        if(password === process.env[`${user.toUpperCase()}_PASS`]) {
+        if(password === userPass) {
 
-            const jwtToken = jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: '15min' });
+            const jwtToken = jwt.sign({ user }, process.env.JWT_SECRET+userPass, { expiresIn: '15min' });
 
             response.jwtToken = jwtToken;
             response.auth=true;
@@ -23,7 +26,7 @@ export default (req, res, next) => {
             return;
         }
 
-        response.message = 'Wrong login credentils';
+        response.message = 'Wrong login credentials';
         res.json(response);
 
     } catch (error) {

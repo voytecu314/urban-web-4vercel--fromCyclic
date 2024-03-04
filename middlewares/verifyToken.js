@@ -5,7 +5,12 @@ export default
 
         try {
 
-            const decodedPayload = jwt.verify(req.body.jwt_token, process.env.JWT_SECRET);
+            //later change userPass to userHash (bcrypt)
+            const userPass = process.env[`${user.toUpperCase()}_PASS`];
+            // const salt = userPass xxx
+
+            const decodedPayload = jwt.verify(req.body.jwtToken, process.env.JWT_SECRET+userPass);
+            req.user = decodedPayload.user;
             next();
 
           } catch(err) {
