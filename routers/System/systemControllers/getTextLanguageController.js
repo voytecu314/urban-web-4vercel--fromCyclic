@@ -5,7 +5,7 @@ const s3 = new AWS.S3();
 export default async (req, res, next) => {
 
     try {
-        console.log(req.params);
+        
         const { websiteName, language } = req.params;
 
         const bucketResponse = await s3.getObject({
