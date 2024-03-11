@@ -13,7 +13,7 @@ export default async (req, res, next) => {
             Key: s3paths[websiteName].languages[language],
         }).promise()
 
-        res.json({s3, bucketResponse: bucketResponse.Body.toString()});
+        res.json( bucketResponse.Body.toString() );
 
     } catch (error) {
         next(error)
