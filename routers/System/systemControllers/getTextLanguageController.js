@@ -5,7 +5,7 @@ const s3 = new AWS.S3();
 export default async (req, res, next) => {
 
     try {
-        
+
         const { websiteName, language } = req.params;
 
         const bucketResponse = await s3.getObject({
@@ -13,7 +13,7 @@ export default async (req, res, next) => {
             Key: s3paths[websiteName].languages[language],
         }).promise()
 
-        res.json(bucketResponse);
+        res.json({s3, bucketResponse: bucketResponse.Body.toString()});
 
     } catch (error) {
         next(error)
