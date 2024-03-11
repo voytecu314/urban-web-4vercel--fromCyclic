@@ -16,7 +16,7 @@ export default (req, res, next) => {
         
         if(password === userPass) {
 
-            const jwtToken = jwt.sign({ user }, process.env.JWT_SECRET+userPass, { expiresIn: '15min' });
+            const jwtToken = jwt.sign({ user: user.toLowerCase() }, process.env.JWT_SECRET+userPass, { expiresIn: '15min' });
 
             response.jwtToken = jwtToken;
             response.auth=true;
