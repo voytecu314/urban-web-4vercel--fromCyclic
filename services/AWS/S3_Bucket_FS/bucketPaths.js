@@ -15,4 +15,11 @@ class WebsiteS3Paths {
     }
 }
 
-export const lackdoktorS3Paths = new WebsiteS3Paths("lackdoktor",["DE","EN"]);
+
+const lackdoktorS3Paths = new WebsiteS3Paths("lackdoktor",["DE","EN"]);
+
+const s3paths = { 
+    lackdoktor: lackdoktorS3Paths,
+ };
+
+export default s3paths;
