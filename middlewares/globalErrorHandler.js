@@ -1,4 +1,5 @@
 export default (error, req, res, next) => {
-    error.error = true;
-    res.json(error);
+    
+    res.json({error: true, message: error.message});
+
 }
