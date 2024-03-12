@@ -5,7 +5,7 @@ const s3 = new AWS.S3();
 export default async (req, res,next) => {
 
     try {
-        console.log(req.body);
+        
         const userFromTokenPayload = req.user;
         const { root, language, textNodesJsonData } = req.body;
 
