@@ -11,7 +11,7 @@ export default async (req, res,next) => {
 
         if(userFromTokenPayload !== root) throw new Error('Path and user don\'t match'); 
 
-        const s3path = s3paths[root].languages[language];
+        const s3path = s3paths[root].languages[language.toUpperCase()];
         
         await s3.putObject({
             Body: JSON.stringify(textNodesJsonData),

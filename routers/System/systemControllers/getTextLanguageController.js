@@ -10,7 +10,7 @@ export default async (req, res, next) => {
 
         const bucketResponse = await s3.getObject({
             Bucket: process.env.CYCLIC_BUCKET_NAME,
-            Key: s3paths[websiteName].languages[language],
+            Key: s3paths[websiteName].languages[language.toUpperCase()],
         }).promise()
 
         res.json( JSON.parse(bucketResponse.Body.toString()) );
