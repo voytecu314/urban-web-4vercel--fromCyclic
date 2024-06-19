@@ -5,6 +5,7 @@ import globalErrorHandler from './middlewares/globalErrorHandler.js';
 //import dotenv from 'dotenv'; NO NEED ON VERCEL
 import systemRouter from './routers/System/systemRouter.js';
 import lackDoktorRouter from './routers/LackDocktor/lackDoktorRouter.js';
+import TextNodeModel from './models/textNodesModel.js';
 //dotenv.config(); NO NEED ON VERCEL
 
 connectToDb();
