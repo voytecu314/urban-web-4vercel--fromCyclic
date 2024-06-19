@@ -19,7 +19,7 @@ export default async (req, res, next) => {
         if(passwordMatch) {
 
 
-            const jwtToken = jwt.sign({ user: user.toLowerCase(), passUUID }, process.env.JWT_SECRET+userHash, { expiresIn: '15min' });
+            const jwtToken = jwt.sign({ user: user.toLowerCase() }, process.env.JWT_SECRET+userHash, { expiresIn: '15min' });
 
             response.jwtToken = jwtToken;
             response.auth=true;
