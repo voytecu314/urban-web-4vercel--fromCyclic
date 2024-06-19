@@ -1,11 +1,13 @@
 import express from 'express';
 import cors from 'cors';
+import { connectToDb } from "./db/db_connection.js";
 import globalErrorHandler from './middlewares/globalErrorHandler.js';
 //import dotenv from 'dotenv'; NO NEED ON VERCEL
 import systemRouter from './routers/System/systemRouter.js';
 import lackDoktorRouter from './routers/LackDocktor/lackDoktorRouter.js';
 //dotenv.config(); NO NEED ON VERCEL
 
+connectToDb();
 const app = express();
 
 const PORT = process.env.PORT || 5500;
@@ -16,6 +18,10 @@ app.use('/',express.json());
 
 app.use('/system', systemRouter);
 app.use('/lackdoktor',lackDoktorRouter);
+
+app.get('/data',async (req,res)=>{
+    res.json(await TextNodeModel.find({}));
+});
 
 //Global error handle
 app.use('/', globalErrorHandler);
