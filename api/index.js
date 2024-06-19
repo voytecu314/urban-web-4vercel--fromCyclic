@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import globalErrorHandler from './middlewares/globalErrorHandler.js';
-//import dotenv from 'dotenv';
+//import dotenv from 'dotenv'; NO NEED ON VERCEL
 import systemRouter from './routers/System/systemRouter.js';
 import lackDoktorRouter from './routers/LackDocktor/lackDoktorRouter.js';
-//dotenv.config();
+//dotenv.config(); NO NEED ON VERCEL
 
 const app = express();
 
