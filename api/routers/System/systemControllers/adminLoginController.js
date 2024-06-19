@@ -12,13 +12,14 @@ export default async (req, res, next) => {
 
         const {user, password} = req.body;
         
-        const userHash = process.env[`${user.toUpperCase()}_PASS`]
+        const userHash = process.env[`${user.toUpperCase()}_HASH`]
         
         const passwordMatch = await bcrypt.compare(password, userHash);
         
         if(passwordMatch) {
 
-            const jwtToken = jwt.sign({ user: user.toLowerCase() }, process.env.JWT_SECRET+userPass, { expiresIn: '15min' });
+
+            const jwtToken = jwt.sign({ user: user.toLowerCase(), passUUID }, process.env.JWT_SECRET+userHash, { expiresIn: '15min' });
 
             response.jwtToken = jwtToken;
             response.auth=true;
