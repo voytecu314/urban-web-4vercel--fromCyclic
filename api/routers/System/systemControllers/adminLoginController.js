@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
+import bcrypt from 'bcrypt';
 
-export default (req, res, next) => {
+export default async (req, res, next) => {
     try {
 
         const response = {
@@ -10,11 +11,12 @@ export default (req, res, next) => {
         }
 
         const {user, password} = req.body;
-        //later change userPass to userHash (bcrypt)
-        const userPass = process.env[`${user.toUpperCase()}_PASS`]
-        // const salt = userPass xxx
         
-        if(password === userPass) {
+        const userHash = process.env[`${user.toUpperCase()}_PASS`]
+        
+        const passwordMatch = await bcrypt.compare(password, userHash);
+        
+        if(passwordMatch) {
 
             const jwtToken = jwt.sign({ user: user.toLowerCase() }, process.env.JWT_SECRET+userPass, { expiresIn: '15min' });
 
