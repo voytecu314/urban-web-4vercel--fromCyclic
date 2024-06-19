@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import globalErrorHandler from './middlewares/globalErrorHandler.js';
-import dotenv from 'dotenv';
+//import dotenv from 'dotenv';
 import systemRouter from './routers/System/systemRouter.js';
 import lackDoktorRouter from './routers/LackDocktor/lackDoktorRouter.js';
-dotenv.config();
+//dotenv.config();
 
 const app = express();
 
