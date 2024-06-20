@@ -3,11 +3,11 @@ export default async (req, res,next) => {
     try {
         
         const userFromTokenPayload = req.user;
-        const { root, language, textNodesArray } = req.body;
+        const { user, language, textNodesArray } = req.body;
 
-        if(userFromTokenPayload !== root) throw new Error('Path and user don\'t match'); 
+        if(userFromTokenPayload !== user) throw new Error('Path and user don\'t match'); 
         
-        res.json({error: false, message: "Data saved !",root, language, textNodesArray });
+        res.json({error: false, message: "Data saved !",user, language, textNodesArray });
         
     } catch (error) {
         

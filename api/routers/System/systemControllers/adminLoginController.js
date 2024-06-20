@@ -12,6 +12,7 @@ export default async (req, res, next) => {
 
         const {user, password} = req.body;
         
+        //later get hash and salt/pepper from db
         const userHash = process.env[`${user.toUpperCase()}_HASH`]
         
         const passwordMatch = await bcrypt.compare(password, userHash);
