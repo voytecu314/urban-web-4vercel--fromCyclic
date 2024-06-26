@@ -4,7 +4,6 @@ import { connectToDb } from "./db/db_connection.js";
 import globalErrorHandler from './middlewares/globalErrorHandler.js';
 import systemRouter from './routers/System/systemRouter.js';
 import lackDoktorRouter from './routers/LackDocktor/lackDoktorRouter.js';
-import {TextNodeModel} from './models/textNodesModel.js';
 
 connectToDb();
 const app = express();
