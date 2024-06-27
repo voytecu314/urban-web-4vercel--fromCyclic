@@ -17,8 +17,8 @@ export default async (req, res,next) => {
                         nodeAddress
                     },
                     update:{
-                        $set: {[`textContent.${language}`]: textContent},
-                        $push: { [`textBackup.${language}`]: textContent }
+                        $set: {[`textContent.${language}`]: textContent[language]},
+                        $push: { [`textBackup.${language}`]: textContent[language] }
                     }
                 }
             }
