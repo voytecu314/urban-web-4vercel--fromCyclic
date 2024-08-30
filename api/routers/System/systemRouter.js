@@ -10,6 +10,6 @@ const router = express.Router();
 router.get('/:websiteName/languages/:language', getTextLanguageController);
 router.post('/admin-login/:site', adminLoginController);
 router.post('/send-text-nodes', verifyToken ,sendTextNodesController);
-router.post(':websiteName/send-email/:feedbackStatus' ,sendEmail);
+router.post('/:websiteName/send-email/:feedbackStatus' ,sendEmail);
 
 export default router;
