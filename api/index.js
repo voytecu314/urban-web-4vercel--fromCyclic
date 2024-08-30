@@ -13,7 +13,6 @@ app.use( cors() ); //{origin: 'https://lack-docktor-urban-web-e9e6fcdb29dd4dcf9d
 app.use('/',express.json());
 
 app.use('/system', systemRouter);
-app.use('/lackdoktor',lackDoktorRouter);
 
 //Global error handle
 app.use('/', globalErrorHandler);
