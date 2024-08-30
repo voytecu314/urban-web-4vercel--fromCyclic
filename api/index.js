@@ -3,7 +3,6 @@ import cors from 'cors';
 import { connectToDb } from "./db/db_connection.js";
 import globalErrorHandler from './middlewares/globalErrorHandler.js';
 import systemRouter from './routers/System/systemRouter.js';
-import lackDoktorRouter from './routers/LackDocktor/lackDoktorRouter.js';
 
 connectToDb();
 const app = express();
