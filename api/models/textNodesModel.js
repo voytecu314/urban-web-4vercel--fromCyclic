@@ -9,5 +9,4 @@ const textNodeSchema = new Schema({
     optimalLength: {type: Number, cast: false}
 });
 
-export const LACKDOKTORtxtNodesModel = model('lackdoktor_text_node', textNodeSchema);
-export const URBANWEBtxtNodesModel = model('urbanweb_text_node', textNodeSchema);
+export const TextNodesModel = model('lackdoktor_text_node', textNodeSchema);
