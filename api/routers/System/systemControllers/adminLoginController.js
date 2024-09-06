@@ -5,7 +5,7 @@ export default async (req, res, next) => {
     try {
 
         const response = {
-            jswToken: undefined,
+            jwtToken: undefined,
             auth: false,
             message: null,
         }
