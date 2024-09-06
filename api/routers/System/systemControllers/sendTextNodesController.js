@@ -1,5 +1,3 @@
-//import {TextNodesModel} from '../../../models/textNodesModel.js';
-
 export default async (req, res,next) => {
 
     try {
@@ -8,6 +6,8 @@ export default async (req, res,next) => {
         const { user, language, textNodesArray } = req.body;
 
         if(jwtPayload.user !== user.toLowerCase()) throw new Error('Path and user don\'t match'); 
+
+        const {[`${websiteName.toUpperCase()}txtNodesModel`]: TextNodesModel} = await import('../../../models/textNodesModel.js');
 
         const updateNodes = textNodesArray.map( ({nodeAddress, textContent}) => {
             
