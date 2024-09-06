@@ -6,7 +6,7 @@ export default async (req, res, next) => {
 
         const { websiteName, language } = req.params;
 
-        const {[`${websiteName.toUpperCase()}txtNodesModel`]: TextNodesModel} = await import('../models/textNodesModel.js');
+        const {[`${websiteName.toUpperCase()}txtNodesModel`]: TextNodesModel} = await import('../../../models/textNodesModel.js');
 
         const textNodes = await TextNodesModel.find({});
         console.log({websiteName, language});
