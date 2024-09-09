@@ -19,13 +19,14 @@ export default async (req, res, next) => {
         const adminDoc = await collection.find({website_name: user}).toArray();
         const hashes = adminDoc[0].hash;
         //const userHash = process.env[`${user.toUpperCase()}_HASH`]
-
+        let userHash;
         //short-circuit return implementation for asyn callbac ('some' array method alternative)
         const checkHash = async (hash) => {return await bcrypt.compare(password, hash)};
 
         const checkHahes = async (hashesArray, asyncCheckFunction) => {
             for (const hash of hashesArray) {
                 if (await asyncCheckFunction(hash)) {
+                  userHash = hash;
                   return true; // If any item passes the test, return true immediately
                 }
               }
