@@ -15,7 +15,7 @@ export default async (req, res, next) => {
         
         //later add pepper from env
 
-        const collection = mongoose.connection.collection('cms_admins');
+        const collection = mongoose.connection.db.collection('cms_admins');
         const adminDoc = await collection.find({website_name: user}).toArray();
         const hashes = adminDoc[0].hash;
         //const userHash = process.env[`${user.toUpperCase()}_HASH`]
