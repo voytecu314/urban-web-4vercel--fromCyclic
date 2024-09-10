@@ -8,9 +8,9 @@ export default
             const {user, jwtToken} = req.body; 
 
             //later change to DB
-            const userHash = process.env[`${user.toUpperCase()}_HASH`];
+            //const userHash = process.env[`${user.toUpperCase()}_HASH`];
 
-            const decodedPayload = jwt.verify(jwtToken, process.env.JWT_SECRET+userHash);
+            const decodedPayload = jwt.verify(jwtToken, process.env.JWT_SECRET+user.loLowerCase());
             req.jwtPayload = decodedPayload;
             next();
 
