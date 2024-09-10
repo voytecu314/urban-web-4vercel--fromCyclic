@@ -7,7 +7,7 @@ export default async (req, res,next) => {
 
         if(jwtPayload.user !== user.toLowerCase()) throw new Error('Path and user don\'t match'); 
 
-        const {[`${websiteName.toUpperCase()}txtNodesModel`]: TextNodesModel} = await import('../../../models/textNodesModel.js');
+        const {[`${user.toUpperCase()}txtNodesModel`]: TextNodesModel} = await import('../../../models/textNodesModel.js');
 
         const updateNodes = textNodesArray.map( ({nodeAddress, textContent}) => {
             
