@@ -20,14 +20,13 @@ export default async (req, res, next) => {
         const hashes = adminDoc[0].hash;
         //const userHash = process.env[`${user.toUpperCase()}_HASH`]
         let userHash;
-        let hashIndex = 0;
         //short-circuit return implementation for asyn callbac ('some' array method alternative)
         const checkHash = async (hash) => {return await bcrypt.compare(password, hash)};
 
         const checkHahes = async (hashesArray, asyncCheckFunction) => {
-            for (const [index,hash] of hashesArray.entries()) {
+            for (const hash of hashesArray) {
                 if (await asyncCheckFunction(hash)) {
-                  userHash = hash; hashIndex = index;
+                  userHash = hash;
                   return true; // If any item passes the test, return true immediately
                 }
               }
@@ -39,7 +38,7 @@ export default async (req, res, next) => {
         if(passwordMatch) {
 
 
-            const jwtToken = jwt.sign({ user: user.toLowerCase(), hshIndx: hashIndex }, process.env.JWT_SECRET+userHash, { expiresIn: '15min' });
+            const jwtToken = jwt.sign({ user: user.toLowerCase() }, process.env.JWT_SECRET+userHash, { expiresIn: '15min' });
 
             response.jwtToken = jwtToken;
             response.auth=true;
