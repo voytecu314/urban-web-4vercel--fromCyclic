@@ -11,3 +11,4 @@ const textNodeSchema = new Schema({
 
 export const LACKDOKTORtxtNodesModel = model('lackdoktor_text_node', textNodeSchema);
 export const URBANWEBtxtNodesModel = model('urbanweb_text_node', textNodeSchema);
+export const BERLINBUSINESSBRIDGE_HOMEtxtNodesModel = model('berlinbusinessbridge_home_text_node', textNodeSchema);
