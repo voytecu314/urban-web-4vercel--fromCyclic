@@ -38,7 +38,7 @@ export default async (req, res, next) => {
         if(passwordMatch) {
 
 
-            const jwtToken = jwt.sign({ user: user.toLowerCase() }, process.env.JWT_SECRET+user.split('_')[0].toLowerCase(), { expiresIn: '15min' });
+            const jwtToken = jwt.sign({ user: user.split('_')[0].toLowerCase() }, process.env.JWT_SECRET+user.split('_')[0].toLowerCase(), { expiresIn: '15min' });
 
             response.jwtToken = jwtToken;
             response.auth=true;
