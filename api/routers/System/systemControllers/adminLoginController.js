@@ -16,7 +16,7 @@ export default async (req, res, next) => {
         //later add pepper from env
 
         const collection = mongoose.connection.db.collection('cms_admins');
-        const adminDoc = await collection.find({website_name: user}).toArray();
+        const adminDoc = await collection.find({website_name: user.split('_')[0]}).toArray();
         const hashes = adminDoc[0].hash;
         //const userHash = process.env[`${user.toUpperCase()}_HASH`]
         let userHash;
@@ -38,7 +38,7 @@ export default async (req, res, next) => {
         if(passwordMatch) {
 
 
-            const jwtToken = jwt.sign({ user: user.toLowerCase() }, process.env.JWT_SECRET+user.toLowerCase(), { expiresIn: '15min' });
+            const jwtToken = jwt.sign({ user: user.toLowerCase() }, process.env.JWT_SECRET+user.split('_')[0].toLowerCase(), { expiresIn: '15min' });
 
             response.jwtToken = jwtToken;
             response.auth=true;
