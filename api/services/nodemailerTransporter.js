@@ -3,11 +3,11 @@ import nodemailer from 'nodemailer';
 function mailService (websiteName) {
    
     const transporter = nodemailer.createTransport({
-        host: 'mail.privateemail.com',
+        host: 'smtp.gmail.com',
         port: 465,
         secure: true,
         auth: {
-        user: 'info@urban-web.org',
+        user: 'wojtek.urbanski.web.dev@gmail.com',
         pass: process.env[`MAIL_PASS_${websiteName.toUpperCase()}`],
         },
     });
