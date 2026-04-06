@@ -4,7 +4,7 @@ import { connectToDb } from "../lib/db/db_connection.js";
 import globalErrorHandler from '../lib/middlewares/globalErrorHandler.js';
 import systemRouter from '../lib/routers/System/systemRouter.js';
 
-connectToDb();
+await connectToDb();
 const app = express();
 
 const PORT = process.env.PORT || 5500;
