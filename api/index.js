@@ -9,7 +9,9 @@ const app = express();
 
 const PORT = process.env.PORT || 5500;
 
-app.use( cors() ); //{origin: 'https://lack-docktor-urban-web-e9e6fcdb29dd4dcf9db3c9d0cc6752c1d38eb1fa.gitlab.io'}
+app.options("*", cors());
+app.use( cors() );
+
 app.use('/',express.json());
 
 app.use('/system', systemRouter);
