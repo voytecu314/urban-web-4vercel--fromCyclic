@@ -2,7 +2,7 @@
   "name": "urban-web",
   "version": "1.0.0",
   "description": "Server for Urban Web testing website",
-  "main": "api/index.js",
+  "main": "src/index.js",
   "engines": {
     "node": ">=16.16"
   },
