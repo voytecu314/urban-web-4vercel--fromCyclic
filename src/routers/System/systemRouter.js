@@ -8,7 +8,7 @@ import sendEmail from './systemControllers/sendEmailController.js'
 
 const router = express.Router();
 
-router.get('/check', (req,res)=>{return res.json({all:ok})});
+router.get('/check', (req,res)=>{return res.json({all:'ok'})});
 router.get('/:websiteName/languages/:language', getTextLanguageController);
 router.post('/admin-login/:site', adminLoginController);
 router.post('/admin-password', managePasswordController);
